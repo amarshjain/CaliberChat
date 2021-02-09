@@ -1,4 +1,4 @@
-# Video Meeting
+<!-- # Video Meeting
 
 Google Meet / Zoom clone in a few lines of code.
 
@@ -18,10 +18,15 @@ Try Video Meeting here [video.sebastienbiollo.com](https://video.sebastienbiollo
 - Unlimited users
 - Messaging chat and video streaming in real-time
 - Screen sharing to present documents, slides, and more
-- Everyting is peer-to-peer thanks to webrtc
+- Everyting is peer-to-peer thanks to webrtc -->
 
 
 ### Local setup
 
 1. `yarn install`
 2. `yarn dev`
+
+OR
+
+1. `npm install`
+2. `npm run dev`
