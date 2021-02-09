@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import io from 'socket.io-client'
 import faker from "faker"
 
@@ -7,6 +7,7 @@ import VideocamIcon from '@material-ui/icons/Videocam'
 import VideocamOffIcon from '@material-ui/icons/VideocamOff'
 import MicIcon from '@material-ui/icons/Mic'
 import MicOffIcon from '@material-ui/icons/MicOff'
+import MovieIcon from '@material-ui/icons/Movie'
 import ScreenShareIcon from '@material-ui/icons/ScreenShare'
 import StopScreenShareIcon from '@material-ui/icons/StopScreenShare'
 import CallEndIcon from '@material-ui/icons/CallEnd'
@@ -19,6 +20,7 @@ import { Row } from 'reactstrap'
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.css'
 import "./Video.css"
+import { ScreenRecord } from './ScreenRecord'
 
 const server_url = process.env.NODE_ENV === 'production' ? 'https://video.sebastienbiollo.com' : "http://localhost:4001"
 
@@ -32,6 +34,8 @@ const peerConnectionConfig = {
 var socket = null
 var socketId = null
 var elms = 0
+
+
 
 class Video extends Component {
 	constructor(props) {
@@ -53,6 +57,8 @@ class Video extends Component {
 			newmessages: 0,
 			askForUsername: true,
 			username: faker.internet.userName(),
+			screenRecord: false,
+			setScreenRecord: false
 		}
 		connections = {}
 
@@ -482,6 +488,9 @@ class Video extends Component {
 								{this.state.audio === true ? <MicIcon /> : <MicOffIcon />}
 							</IconButton>
 
+							<ScreenRecord />
+
+
 							{this.state.screenAvailable === true ?
 								<IconButton style={{ color: "#424242" }} onClick={this.handleScreen}>
 									{this.state.screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
@@ -493,6 +502,7 @@ class Video extends Component {
 									<ChatIcon />
 								</IconButton>
 							</Badge>
+
 						</div>
 
 						<Modal show={this.state.showModal} onHide={this.closeChat} style={{ zIndex: "999999" }}>

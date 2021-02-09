@@ -20,13 +20,13 @@ if(process.env.NODE_ENV==='production'){
 }
 app.set('port', (process.env.PORT || 4001))
 
-sanitizeString = (str) => {
+const sanitizeString = (str) => {
 	return xss(str)
 }
 
-connections = {}
-messages = {}
-timeOnline = {}
+let connections = {}
+let messages = {}
+let timeOnline = {}
 
 io.on('connection', (socket) => {
 
