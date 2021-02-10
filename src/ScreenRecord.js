@@ -24,7 +24,7 @@ export const ScreenRecord = () => {
       stopRecording,
       mediaBlobUrl,
       clearBlobUrl
-    } = screenRecord ? useReactMediaRecorder({screen: true, audio:true,type: "video/mp4" }) :  useReactMediaRecorder({video: true, audio:true });
+    } = screenRecord ? useReactMediaRecorder({video:true, screen:true, audio:true, type: "video/mp4" }) :  useReactMediaRecorder({video: true, screen:true, audio:true });
     
   const changeToScreen = () => {
     setScreenRecord(!screenRecord)
